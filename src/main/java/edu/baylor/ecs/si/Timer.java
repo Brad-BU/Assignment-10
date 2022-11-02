@@ -36,13 +36,11 @@ public class Timer {
 		  }
 	      timeNow = System.currentTimeMillis();
 		  method(timeToWait);
-			
+		  logger.info("Calling took: "+ (System.currentTimeMillis() - timeNow));
+		  logger.info("* should take: "+ timeToWait);
 		} catch (InterruptedException e) {
-			logger.severe("InterruptedException rised");
+			logger.severe("InterruptedException raised");
 			throw new TimerException("Sleep exception", e);
-		} finally {
-			logger.info("Calling took: "+ (System.currentTimeMillis() - timeNow));
-			logger.info("* should take: "+ timeToWait);
 		}
 		return timeNow;
 	}
